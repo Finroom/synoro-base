@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { Bot, CheckCircle } from 'lucide-react'
 
 export const AIAssistantSection = () => {
@@ -34,7 +35,7 @@ export const AIAssistantSection = () => {
                                 </div>
                                 <div>
                                     <span className="font-medium text-gray-900">Natural Language Queries</span>
-                                    <p className="text-gray-600 text-sm">Ask questions like "What's my profit this month?" or "How much did I spend on fuel?"</p>
+                                    <p className="text-gray-600 text-sm">Ask questions like &ldquo;What&rsquo;s my profit this month?&rdquo; or &ldquo;How much did I spend on fuel?&rdquo;</p>
                                 </div>
                             </div>
 
@@ -62,10 +63,13 @@ export const AIAssistantSection = () => {
 
                     <div className="relative">
                         <div className="relative">
-                            <img
+                            <Image
                                 src="/images/ai-assistant.png"
-                                alt="AI Assistant Chat Interface with blue sparkle icon, 'How can I help you today?' heading, four action buttons (Explain my financial report, Tax questions, Business performance, General accounting help), and input field asking 'Ask anything about your clients, revenue, expenses, or business insights...'"
+                                alt="AI Assistant Chat Interface with blue sparkle icon, How can I help you today heading, four action buttons for financial reports, tax questions, business performance, and general accounting help, plus input field for business insights"
+                                width={600}
+                                height={400}
                                 className="w-full h-auto object-cover shadow-xl rounded-xl"
+                                priority
                             />
                         </div>
                     </div>

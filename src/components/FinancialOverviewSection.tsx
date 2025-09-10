@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { BarChart3, Bot } from 'lucide-react'
 
 export const FinancialOverviewSection = () => {
@@ -24,10 +25,13 @@ export const FinancialOverviewSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-100/50 to-purple-100/50 rounded-3xl transform rotate-1"></div>
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-blue-100/30 rounded-3xl transform -rotate-1"></div>
                     <div className="relative rounded-xl bg-gray-50 p-4">
-                        <img
+                        <Image
                             src="/images/financial-overview.png"
                             alt="Financial Overview Dashboard - Real-time insights into your business performance"
+                            width={1200}
+                            height={800}
                             className="w-full h-auto object-contain shadow-lg border border-gray-100 rounded-xl bg-white"
+                            priority
                         />
 
                         <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
