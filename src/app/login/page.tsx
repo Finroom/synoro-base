@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { ArrowRight, Sparkles, Mail, Lock, ArrowLeft } from 'lucide-react'
+import { authService } from '@/lib/services/authService'
 
 export default function LoginPage() {
     const router = useRouter()
@@ -15,43 +16,42 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    const handleLogin = async (email: string, password: string) => {
-        await new Promise(resolve => setTimeout(resolve, 1000))
-
-        if (email === 'demo@truckingco.com' && password === 'demo123') {
-            console.log('Client login successful!')
-
-            return { success: true }
-
-        } else if (email === 'admin@synoro.com' && password === 'admin123') {
-            console.log('Admin login successful!')
-
-            return { success: true }
-
-        } else {
-            return {
-                success: false,
-                error: 'Invalid email or password. Please try the demo credentials.'
-            }
-        }
-    }
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
         setError('')
 
-        const result = await handleLogin(email, password)
+        try {
+            const result = await authService.signIn(email, password)
 
-        if (!result.success) {
-            setError(result.error || 'Login failed')
+            if (result.success) {
+                const profile = await authService.getCurrentProfile()
+
+                if (profile?.role_name === 'admin') {
+                    router.push('/admin')
+                } else if (profile?.role_name === 'bookkeeper') {
+                    router.push('/bookkeeper')
+                } else {
+                    router.push('/client')
+                }
+            } else {
+                setError(result.error || 'Login failed')
+            }
+        } catch (error) {
+            setError('An unexpected error occurred')
+            console.error('Login error:', error)
+        } finally {
+            setLoading(false)
         }
-
-        setLoading(false)
     }
 
     const handleBackToHome = () => {
         router.push('/')
+    }
+
+    const fillDemoCredentials = (demoEmail: string, demoPassword: string) => {
+        setEmail(demoEmail)
+        setPassword(demoPassword)
     }
 
     return (
@@ -176,10 +176,7 @@ export default function LoginPage() {
                                 type="button"
                                 variant="outline"
                                 size="sm"
-                                onClick={() => {
-                                    setEmail('demo@truckingco.com')
-                                    setPassword('demo123')
-                                }}
+                                onClick={() => fillDemoCredentials('demo@truckingco.com', 'demo123')}
                                 className="flex-1 text-blue-700 border-blue-300 hover:bg-blue-100"
                             >
                                 Use Client Demo
@@ -188,10 +185,7 @@ export default function LoginPage() {
                                 type="button"
                                 variant="outline"
                                 size="sm"
-                                onClick={() => {
-                                    setEmail('admin@synoro.com')
-                                    setPassword('admin123')
-                                }}
+                                onClick={() => fillDemoCredentials('admin@synoro.com', 'admin123')}
                                 className="flex-1 text-blue-700 border-blue-300 hover:bg-blue-100"
                             >
                                 Use Admin Demo
