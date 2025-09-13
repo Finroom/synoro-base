@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import Image from 'next/image'
 import { BarChart3, Bot } from 'lucide-react'
@@ -31,7 +29,8 @@ export const FinancialOverviewSection = () => {
                             width={1200}
                             height={800}
                             className="w-full h-auto object-contain shadow-lg border border-gray-100 rounded-xl bg-white"
-                            priority
+                            loading="lazy"
+                            sizes="(min-width: 1024px) 1200px, 100vw"
                         />
 
                         <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">

@@ -1,7 +1,4 @@
-'use client'
-
 import React from 'react'
-import { useRouter } from 'next/navigation'
 import { Header } from '@/components/Header'
 import { HeroSection } from '@/components/HeroSection'
 import { FinancialOverviewSection } from '@/components/FinancialOverviewSection'
@@ -14,18 +11,11 @@ import { CTASection } from '@/components/CTASection'
 import { Footer } from '@/components/Footer'
 
 export default function HomePage() {
-  const router = useRouter()
-
-  const handleLoginClick = () => {
-    router.push('/login')
-    console.log('Navigating to login page')
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-blue-50">
-      <Header onLoginClick={handleLoginClick} />
+      <Header />
 
-      <HeroSection onLoginClick={handleLoginClick} />
+      <HeroSection />
 
       <FinancialOverviewSection />
 
@@ -39,7 +29,7 @@ export default function HomePage() {
 
       <PricingSection />
 
-      <CTASection onLoginClick={handleLoginClick} />
+      <CTASection />
 
       <Footer />
     </div>

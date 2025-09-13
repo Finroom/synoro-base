@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import Image from 'next/image'
 import { Bot, CheckCircle } from 'lucide-react'
@@ -69,7 +67,8 @@ export const AIAssistantSection = () => {
                                 width={600}
                                 height={400}
                                 className="w-full h-auto object-cover shadow-xl rounded-xl"
-                                priority
+                                loading="lazy"
+                                sizes="(min-width: 1024px) 600px, 100vw"
                             />
                         </div>
                     </div>
