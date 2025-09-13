@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { FileText, CheckCircle } from 'lucide-react'
 import Image from 'next/image'
@@ -21,6 +19,8 @@ export const FinancialReportsSection = () => {
                                     width={800}
                                     height={600}
                                     className="w-full h-auto object-contain rounded-xl bg-white"
+                                    loading="lazy"
+                                    sizes="(min-width: 1024px) 800px, 100vw"
                                 />
                             </div>
                         </div>

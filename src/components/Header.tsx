@@ -1,14 +1,7 @@
-'use client'
-
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import { Sparkles } from 'lucide-react'
 
-interface HeaderProps {
-    onLoginClick: () => void
-}
-
-export const Header = ({ onLoginClick }: HeaderProps) => {
+export const Header = () => {
     return (
         <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,16 +19,8 @@ export const Header = ({ onLoginClick }: HeaderProps) => {
                         <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
                     </nav>
                     <div className="flex items-center space-x-4">
-                        <Button
-                            variant="ghost"
-                            onClick={onLoginClick}
-                            className="text-gray-600 hover:text-gray-900"
-                        >
-                            Login
-                        </Button>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                            Free Consultation
-                        </Button>
+                        <a href="/login" className="text-gray-600 hover:text-gray-900 transition-colors">Login</a>
+                        <a href="/login" className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Free Consultation</a>
                     </div>
                 </div>
             </div>

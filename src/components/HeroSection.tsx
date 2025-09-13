@@ -1,14 +1,7 @@
-'use client'
-
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 
-interface HeroSectionProps {
-    onLoginClick: () => void
-}
-
-export const HeroSection = ({ onLoginClick }: HeroSectionProps) => {
+export const HeroSection = () => {
     return (
         <section className="pt-20 pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,14 +20,10 @@ export const HeroSection = ({ onLoginClick }: HeroSectionProps) => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                        <Button
-                            size="lg"
-                            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white"
-                            onClick={onLoginClick}
-                        >
+                        <a href="/login" className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-base font-medium transition-colors">
                             Book Your Free Consultation
                             <ArrowRight className="w-5 h-5 ml-2" />
-                        </Button>
+                        </a>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-gray-600">

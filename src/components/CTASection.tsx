@@ -1,14 +1,7 @@
-'use client'
-
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 
-interface CTASectionProps {
-    onLoginClick: () => void
-}
-
-export const CTASection = ({ onLoginClick }: CTASectionProps) => {
+export const CTASection = () => {
     return (
         <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-700 relative overflow-hidden">
             <div className="absolute inset-0 bg-black/10"></div>
@@ -20,14 +13,10 @@ export const CTASection = ({ onLoginClick }: CTASectionProps) => {
                     Join hundreds of businesses that have already streamlined their finances with our AI-powered solution.
                 </p>
                 <div className="flex justify-center">
-                    <Button
-                        size="lg"
-                        className="px-8 py-4 bg-white text-blue-600 hover:bg-gray-100"
-                        onClick={onLoginClick}
-                    >
+                    <a href="/login" className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-blue-600 hover:bg-gray-100 text-base font-medium transition-colors">
                         Get Started Today
                         <ArrowRight className="w-5 h-5 ml-2" />
-                    </Button>
+                    </a>
                 </div>
             </div>
         </section>
